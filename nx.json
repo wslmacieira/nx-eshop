@@ -33,7 +33,16 @@
       "tags": [],
       "implicitDependencies": ["ngshop"]
     },
+    "orders": {
+      "tags": []
+    },
+    "products": {
+      "tags": []
+    },
     "ui": {
+      "tags": []
+    },
+    "users": {
       "tags": []
     }
   }
