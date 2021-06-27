@@ -19,6 +19,14 @@
             ]
           }
         ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {"type": "attribute", "prefix": "ngshop", "style": "camelCase"}
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {"type": "element", "prefix": "ngshop", "style": "kebab-case"}
+        ],
         "allow": ["functions", "arrowFunctions"]
       }
     },
