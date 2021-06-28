@@ -17,8 +17,16 @@ export class CategoriesService {
     return this.http.get<Category[]>(api_url);
   }
 
+  getCategory(categoryId: string): Observable<Category> {
+    return this.http.get<Category>(`${api_url}/${categoryId}`);
+  }
+
   createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(api_url, category);
+  }
+
+  updateCategory(category: Category): Observable<Category> {
+    return this.http.put<Category>(`${api_url}/${category.id}`, category);
   }
 
   deleteCategory(categoryId: string): Observable<Object> {

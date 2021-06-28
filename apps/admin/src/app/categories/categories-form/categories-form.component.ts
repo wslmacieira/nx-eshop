@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CategoriesService, Category } from '@dwll/products';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
@@ -13,12 +14,15 @@ import { timer } from 'rxjs';
 export class CategoriesFormComponent implements OnInit {
   form!: FormGroup;
   isSubmitted: boolean = false;
+  editMode: boolean = false;
+  currentCategoryId: string = '';
 
   constructor(
     private fb: FormBuilder,
     private categoriesService: CategoriesService,
     private messageService: MessageService,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -26,17 +30,29 @@ export class CategoriesFormComponent implements OnInit {
       name: ['', Validators.required],
       icon: ['', Validators.required]
     });
+
+    this._checEditMode();
   }
 
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.invalid) {
-      return console.log('Form is invalid!');
     }
+
     const category: Category = {
+      id: this.currentCategoryId,
       name: this.categoryForm.name.value,
       icon: this.categoryForm.icon.value
     };
+
+    if (this.editMode) {
+      this._updateCategory(category);
+    } else {
+      this._createCategory(category);
+    }
+  }
+
+  private _createCategory(category: Category) {
     this.categoriesService.createCategory(category).subscribe(
       (response) => {
         this.messageService.add({
@@ -56,6 +72,43 @@ export class CategoriesFormComponent implements OnInit {
         });
       }
     );
+  }
+
+  private _updateCategory(category: Category) {
+    this.categoriesService.updateCategory(category).subscribe(
+      (response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Category is updated!'
+        });
+        timer(2000).toPromise().then((done) => {
+          this.location.back()
+        })
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Category is not updated!'
+        });
+      }
+    );
+  }
+
+  private _checEditMode() {
+    this.route.params.subscribe((params) => {
+      if (params.id) {
+        this.editMode = true;
+        this.currentCategoryId = params.id;
+        this.categoriesService.getCategory(params.id).subscribe(
+          (category) => {
+            this.categoryForm.name.setValue(category.name);
+            this.categoryForm.icon.setValue(category.icon);
+        })
+      }
+      console.log('Params ->', params)
+    })
   }
 
   get categoryForm() {
