@@ -42,7 +42,7 @@ export class CategoriesFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'Category is Created!'
+          detail: 'Category is created!'
         });
         timer(2000).toPromise().then((done) => {
           this.location.back()
@@ -52,7 +52,7 @@ export class CategoriesFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Category is not Created!'
+          detail: 'Category is not created!'
         });
       }
     );

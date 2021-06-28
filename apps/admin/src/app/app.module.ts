@@ -11,6 +11,7 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 import { CategoriesService } from '@dwll/products';
 
@@ -20,7 +21,7 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 const UX_MODULE = [
   CardModule,
@@ -28,7 +29,8 @@ const UX_MODULE = [
   ButtonModule,
   TableModule,
   InputTextModule,
-  ToastModule
+  ToastModule,
+  ConfirmDialogModule
 ]
 
 const routes: Routes = [
@@ -63,7 +65,7 @@ const routes: Routes = [
     ...UX_MODULE
 
   ],
-  providers: [CategoriesService, MessageService],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
