@@ -9,6 +9,7 @@
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
+
 // Pages
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list-page.scss';
@@ -18,4 +19,4 @@
 @import './apps/shop/shared/footer.scss';
 
 // Libs
-@import './libs/ui/ui.scss'
+@import './libs/ui/ui.scss';
