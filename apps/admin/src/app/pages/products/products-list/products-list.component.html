@@ -34,11 +34,11 @@
           <ng-template pTemplate="body" let-product>
             <tr>
               <td>{{product.name}}</td>
-              <td>{{product.image}}</td>
+              <td><img [src]="product.image" alt="" style="width: 100%;"></td>
               <td>{{product.price}}</td>
               <td>{{product.countInStock}}</td>
-              <td>{{product.category}}</td>
-              <td>{{product.dateCreated}}</td>
+              <td>{{product.category.name}}</td>
+              <td>{{product.dateCreated | date:'short'}}</td>
               <td>
                 <p-button (click)="deleteProduct(product.id)" icon="pi pi-trash" styleClass="p-button-danger p-mr-2"></p-button>
                 <p-button (click)="updateProduct(product.id)" icon="pi pi-pencil" styleClass="p-button-success"></p-button>
