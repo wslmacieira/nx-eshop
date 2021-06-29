@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Category } from '../models/category.model';
+import { environment } from '@env/environment';
 
-const api_url = 'http://localhost:3000/api/v1/categories'
+const api_url = `${environment.apiURL}categories`
 @Injectable({
   providedIn: 'root'
 })
