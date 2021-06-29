@@ -28,7 +28,8 @@ export class CategoriesFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      icon: ['', Validators.required]
+      icon: ['', Validators.required],
+      color: ['#fff']
     });
 
     this._checEditMode();
@@ -42,7 +43,8 @@ export class CategoriesFormComponent implements OnInit {
     const category: Category = {
       id: this.currentCategoryId,
       name: this.categoryForm.name.value,
-      icon: this.categoryForm.icon.value
+      icon: this.categoryForm.icon.value,
+      color: this.categoryForm.color.value
     };
 
     if (this.editMode) {
@@ -105,6 +107,7 @@ export class CategoriesFormComponent implements OnInit {
           (category) => {
             this.categoryForm.name.setValue(category.name);
             this.categoryForm.icon.setValue(category.icon);
+            this.categoryForm.color.setValue(category.color);
         })
       }
       console.log('Params ->', params)
