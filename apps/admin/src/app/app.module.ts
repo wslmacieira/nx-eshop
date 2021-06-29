@@ -23,6 +23,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 
 const UX_MODULE = [
   CardModule,
@@ -56,11 +58,23 @@ const routes: Routes = [
         path: 'categories/form/:id',
         component: CategoriesFormComponent
       },
+      {
+        path: 'products',
+        component: ProductsListComponent
+      },
+      {
+        path: 'products/form',
+        component: ProductsFormComponent
+      },
+      {
+        path: 'products/form/:id',
+        component: ProductsFormComponent
+      },
     ]
   }
 ]
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
