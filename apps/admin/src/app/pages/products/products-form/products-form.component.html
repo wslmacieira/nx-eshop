@@ -70,6 +70,13 @@
               <p-editor formControlName="richDescription" [style]="{'height':'320px'}"></p-editor>
               <small *ngIf="productForm.richDescription.invalid && isSubmitted" class="p-error">Price is required</small>
             </div>
+            <div class="p-field p-col-12">
+              <label for="image">Main Image</label>
+              <input type="file" class="p-inputtext" accept="image/*" (change)="onImageUpload($event)" />
+              <div class="p-col-2 p-mt-2">
+                <img style="width: 100%" [src]="imageDisplay" alt="">
+              </div>
+            </div>
           </div>
         </form>
       </div>

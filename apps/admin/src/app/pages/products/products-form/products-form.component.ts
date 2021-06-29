@@ -13,6 +13,7 @@ export class ProductsFormComponent implements OnInit {
   editMode = false;
   isSubmitted = false;
   categories: Category[] = [];
+  imageDisplay: string | ArrayBuffer = '';
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +51,18 @@ export class ProductsFormComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+
+    if(file) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        this.imageDisplay = fileReader.result ?? '';
+      }
+      fileReader.readAsDataURL(file);
+    }
   }
 
 }
