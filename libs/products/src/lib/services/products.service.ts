@@ -30,7 +30,7 @@ export class ProductsService {
     return this.http.put<Product>(`${api_url}/${productId}`, productData);
   }
 
-  deleteCategory(categoryId: string): Observable<Object> {
-    return this.http.delete<Object>(`${api_url}/${categoryId}`)
+  deleteProduct(productId: string): Observable<any> {
+    return this.http.delete<any>(`${api_url}/${productId}`);
   }
 }
