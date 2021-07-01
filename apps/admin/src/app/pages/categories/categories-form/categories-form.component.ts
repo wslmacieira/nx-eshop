@@ -32,7 +32,7 @@ export class CategoriesFormComponent implements OnInit {
       color: ['#fff']
     });
 
-    this._checEditMode();
+    this._checkEditMode();
   }
 
   onSubmit() {
@@ -98,7 +98,7 @@ export class CategoriesFormComponent implements OnInit {
     );
   }
 
-  private _checEditMode() {
+  private _checkEditMode() {
     this.route.params.subscribe((params) => {
       if (params.id) {
         this.editMode = true;
@@ -110,7 +110,6 @@ export class CategoriesFormComponent implements OnInit {
             this.categoryForm.color.setValue(category.color);
         })
       }
-      console.log('Params ->', params)
     })
   }
 

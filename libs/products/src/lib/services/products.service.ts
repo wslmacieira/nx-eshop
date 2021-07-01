@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Category } from '../models/category.model';
 import { environment } from '@env/environment';
 import { Product } from '../models/product.model';
 
@@ -19,16 +18,16 @@ export class ProductsService {
     return this.http.get<Product[]>(api_url);
   }
 
-  getCategory(categoryId: string): Observable<Category> {
-    return this.http.get<Category>(`${api_url}/${categoryId}`);
+  getProduct(productId: string): Observable<Product> {
+    return this.http.get<Product>(`${api_url}/${productId}`);
   }
 
-  createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(api_url, category);
+  createProduct(productData: FormData): Observable<Product> {
+    return this.http.post<Product>(api_url, productData);
   }
 
-  updateCategory(category: Category): Observable<Category> {
-    return this.http.put<Category>(`${api_url}/${category.id}`, category);
+  updateProduct(productData: FormData, productId: string): Observable<Product> {
+    return this.http.put<Product>(`${api_url}/${productId}`, productData);
   }
 
   deleteCategory(categoryId: string): Observable<Object> {

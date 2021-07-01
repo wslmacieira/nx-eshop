@@ -17,6 +17,7 @@
               label="Cancel"
               icon="pi pi-arrow-circle-left"
               styleClass="p-button-secondary"
+              (click)="onCancel()"
             ></p-button>
           </div>
         </p-toolbar>
@@ -52,7 +53,7 @@
             </div>
             <div class="p-field p-col-4">
               <label for="category">Category</label>
-              <p-dropdown [options]="categories" formControlName="category" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Category"></p-dropdown>
+              <p-dropdown [options]="categories" formControlName="category" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Category"></p-dropdown>
               <small *ngIf="productForm.category.invalid && isSubmitted" class="p-error">CountInStock is required</small>
             </div>
             <div class="p-field p-col-4">
