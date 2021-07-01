@@ -18,6 +18,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {EditorModule} from 'primeng/editor';
+import { TagModule } from 'primeng/tag';
 
 import { CategoriesService } from '@dwll/products';
 
@@ -30,6 +31,8 @@ import { CategoriesFormComponent } from './pages/categories/categories-form/cate
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 
 const UX_MODULE = [
   CardModule,
@@ -44,7 +47,8 @@ const UX_MODULE = [
   DropdownModule,
   InputTextareaModule,
   InputSwitchModule,
-  EditorModule
+  EditorModule,
+  TagModule
 ]
 
 const routes: Routes = [
@@ -80,11 +84,23 @@ const routes: Routes = [
         path: 'products/form/:id',
         component: ProductsFormComponent
       },
+      {
+        path: 'users',
+        component: UsersListComponent
+      },
+      {
+        path: 'users/form',
+        component: UsersFormComponent
+      },
+      {
+        path: 'users/form/:id',
+        component: UsersFormComponent
+      },
     ]
   }
 ]
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UsersListComponent, UsersFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
