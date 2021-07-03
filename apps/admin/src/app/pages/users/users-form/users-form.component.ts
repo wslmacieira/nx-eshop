@@ -2,9 +2,16 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { User, UsersService } from '@dwll/products';
+import { User, UsersService } from '@dwll/users';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
+import * as countriesLib from 'i18n-iso-countries'
+
+declare const require: any;
+type Country = {
+  id: string,
+  name: string
+}
 
 @Component({
   selector: 'admin-users-form',
@@ -16,7 +23,7 @@ export class UsersFormComponent implements OnInit {
   isSubmitted = false;
   editmode = false;
   currentUserId: string = '';
-  countries = [];
+  countries: Country[] = [];
 
   constructor(
     private messageService: MessageService,
@@ -28,6 +35,7 @@ export class UsersFormComponent implements OnInit {
 
   ngOnInit(): void {
     this._initUserForm();
+    this._getCountries();
     this._checkEditMode();
   }
 
@@ -141,7 +149,17 @@ export class UsersFormComponent implements OnInit {
     }
   }
 
-  onCancle() {
+  private _getCountries() {
+    countriesLib.registerLocale(require("i18n-iso-countries/langs/pt.json"));
+    this.countries = Object.entries(countriesLib.getNames("pt", {select: "official"})).map((entry) => {
+      return {
+        id: entry[0],
+        name: entry[1]
+      }
+    })
+  }
+
+  onCancel() {
     this.location.back();
   }
 
