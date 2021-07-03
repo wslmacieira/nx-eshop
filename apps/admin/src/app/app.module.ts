@@ -18,7 +18,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {EditorModule} from 'primeng/editor';
-import { TagModule } from 'primeng/tag';
+import {TagModule} from 'primeng/tag';
+import {InputMaskModule} from 'primeng/inputmask';
 
 import { CategoriesService } from '@dwll/products';
 
@@ -48,7 +49,8 @@ const UX_MODULE = [
   InputTextareaModule,
   InputSwitchModule,
   EditorModule,
-  TagModule
+  TagModule,
+  InputMaskModule
 ]
 
 const routes: Routes = [

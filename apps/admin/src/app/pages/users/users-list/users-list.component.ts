@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User, UsersService } from '@dwll/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'dwll-users-list',
+  selector: 'admin-users-list',
   templateUrl: './users-list.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class UsersListComponent implements OnInit {
-
   users: User[] = [];
 
   constructor(
     private usersService: UsersService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
-  ) { }
+    private confirmationService: ConfirmationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this._getUsers();
   }
 
-  updateUser(userId: string) {}
-
-  deleteUser(userId: string): void {
+  deleteUser(userId: string) {
     this.confirmationService.confirm({
-      message: 'Do you want to Delete this user?',
+      message: 'Do you want to Delete this User?',
       header: 'Delete User',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.usersService.deleteUser(userId).subscribe(
-          (response) => {
+          () => {
             this._getUsers();
             this.messageService.add({
               severity: 'success',
@@ -39,7 +37,7 @@ export class UsersListComponent implements OnInit {
               detail: 'User is deleted!'
             });
           },
-          (error) => {
+          () => {
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
@@ -47,15 +45,17 @@ export class UsersListComponent implements OnInit {
             });
           }
         );
-      },
-      reject: (type: any) => {}
+      }
     });
+  }
+
+  updateUser(userid: string) {
+    this.router.navigateByUrl(`users/form/${userid}`);
   }
 
   private _getUsers() {
     this.usersService.getUsers().subscribe((users) => {
       this.users = users;
-    })
+    });
   }
-
 }
