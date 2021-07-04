@@ -20,6 +20,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {EditorModule} from 'primeng/editor';
 import {TagModule} from 'primeng/tag';
 import {InputMaskModule} from 'primeng/inputmask';
+import {FieldsetModule} from 'primeng/fieldset';
 
 import { CategoriesService } from '@dwll/products';
 
@@ -52,7 +53,8 @@ const UX_MODULE = [
   InputSwitchModule,
   EditorModule,
   TagModule,
-  InputMaskModule
+  InputMaskModule,
+  FieldsetModule
 ]
 
 const routes: Routes = [
