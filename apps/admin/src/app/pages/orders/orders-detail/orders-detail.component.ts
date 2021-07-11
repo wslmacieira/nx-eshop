@@ -22,7 +22,10 @@ export class OrdersDetailComponent implements OnInit {
   private _getOrder() {
     this.route.params.subscribe(params => {
       if (params.id) {
-        this.ordersService.getOrder(params.id).subscribe((order) => (this.order = order));
+        this.ordersService.getOrder(params.id).subscribe((order) => {
+          console.log(order),
+          this.order = order
+        });
       }
     })
   }

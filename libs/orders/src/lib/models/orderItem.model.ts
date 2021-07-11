@@ -1,4 +1,5 @@
+import { Product } from '@dwll/products';
 export class OrderItem  {
-  product?: string;
+  product?: Product;
   quantity?: number;
 }
