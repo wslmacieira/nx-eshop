@@ -8,6 +8,7 @@ export class Order {
   shippingAddress2?: string;
   city?: string;
   zip?: string;
+  country?: string;
   phone?: string;
   status?: number;
   totalPrice?: string;
