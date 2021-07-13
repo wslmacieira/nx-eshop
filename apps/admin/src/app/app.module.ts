@@ -22,7 +22,7 @@ import {TagModule} from 'primeng/tag';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FieldsetModule} from 'primeng/fieldset';
 
-import { UsersModule } from '@dwll/users';
+import { AuthGuard, UsersModule } from '@dwll/users';
 import { CategoriesService } from '@dwll/products';
 
 import { AppComponent } from './app.component';
@@ -62,6 +62,7 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
