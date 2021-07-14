@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@dwll/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'dwll-categories-list',
   templateUrl: './categories-list.component.html',
   styles: []
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
+  endsubs$: Subject<any> = new Subject();
 
   constructor(
     private categoriesService: CategoriesService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this._getCategories();
+  }
+
+  ngOnDestroy(): void {
+    this.endsubs$.next();
+    this.endsubs$.complete();
   }
 
   deleteCategory(categoryId: string): void {
@@ -51,14 +59,17 @@ export class CategoriesListComponent implements OnInit {
   }
 
   updateCategory(categoryId: string) {
-    this.router.navigateByUrl(`categories/form/${categoryId}`)
+    this.router.navigateByUrl(`categories/form/${categoryId}`);
     console.log('Category ID ->', categoryId);
   }
 
   private _getCategories() {
-    this.categoriesService.getCategories().subscribe((categories) => {
-      this.categories = categories;
-    })
+    this.categoriesService
+      .getCategories()
+      .pipe(takeUntil(this.endsubs$))
+      .subscribe((categories) => {
+        this.categories = categories;
+      });
   }
 
 }
