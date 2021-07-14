@@ -1,3 +1,4 @@
+import { ProductsSearchComponent } from './../../../../libs/products/src/lib/components/products-search/products-search.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +24,8 @@ const routes: Routes = [
     ProductListComponent,
     HeaderComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    ProductsSearchComponent
   ],
   imports: [
     BrowserModule,
