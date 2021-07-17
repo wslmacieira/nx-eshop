@@ -36,4 +36,7 @@ export class ProductsService {
   getProductsCount(): Observable<number> {
     return this.http.get<number>(`${api_url}/get/count`)
   }
+  getFeaturedProducts(count: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${api_url}/get/featured/${count}`)
+  }
 }

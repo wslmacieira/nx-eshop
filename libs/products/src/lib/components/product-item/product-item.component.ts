@@ -4,15 +4,11 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'products-product-item',
   templateUrl: './product-item.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class ProductItemComponent implements OnInit {
-@Input() product!: Product;
+  @Input() product!: Product;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
