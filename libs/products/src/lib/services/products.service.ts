@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '@env/environment';
 import { Product } from '../models/product.model';
 
-const api_url = `${environment.apiURL}products`
+const api_url = `${environment.apiURL}products`;
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+  constructor(private http: HttpClient) {}
 
-
-  constructor(private http: HttpClient) { }
-
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(api_url);
+  getProducts(categoriesFilter?: string[]): Observable<Product[]> {
+    let params = new HttpParams();
+    if (categoriesFilter) {
+      params = params.append('categories', categoriesFilter.join(','));
+    }
+    return this.http.get<Product[]>(api_url, { params });
   }
 
   getProduct(productId: string): Observable<Product> {
@@ -34,9 +36,9 @@ export class ProductsService {
     return this.http.delete<any>(`${api_url}/${productId}`);
   }
   getProductsCount(): Observable<number> {
-    return this.http.get<number>(`${api_url}/get/count`)
+    return this.http.get<number>(`${api_url}/get/count`);
   }
   getFeaturedProducts(count: number): Observable<Product[]> {
-    return this.http.get<Product[]>(`${api_url}/get/featured/${count}`)
+    return this.http.get<Product[]>(`${api_url}/get/featured/${count}`);
   }
 }
