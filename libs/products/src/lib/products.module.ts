@@ -1,5 +1,6 @@
+import { UiModule } from '@dwll/ui';
+import { OrdersModule } from '@dwll/orders';
 import { ButtonModule } from 'primeng/button';
-import { OrdersModule } from './../../../orders/src/lib/orders.module';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -32,6 +33,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     OrdersModule,
+    UiModule,
     RouterModule.forChild(routes),
     ButtonModule,
     CheckboxModule,
