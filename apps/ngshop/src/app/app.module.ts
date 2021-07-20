@@ -13,6 +13,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersModule } from '@dwll/orders';
 
 const routes: Routes = [{ path: '', component: HomePageComponent }];
 @NgModule({
@@ -24,7 +25,8 @@ const routes: Routes = [{ path: '', component: HomePageComponent }];
     HttpClientModule,
     ProductsModule,
     AccordionModule,
-    UiModule
+    UiModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
