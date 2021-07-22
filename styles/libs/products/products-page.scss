@@ -33,18 +33,12 @@
       font-size: 1.2em;
     }
 
-    .p-button {
-      background-color: $primary-color;
-      border: 0;
-    }
   }
+}
 
-  &-actions {
-    .p-button {
-      background-color: $primary-color;
-      border: 0;
-    }
-  }
+.p-button {
+  background-color: $primary-color;
+  border: 0;
 }
 
 .product-rich-desc {
