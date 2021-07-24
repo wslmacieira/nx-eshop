@@ -7,13 +7,21 @@ import { BadgeModule } from 'primeng/badge';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
+import { DropdownModule } from 'primeng/dropdown';
 
 const routes: Routes = [
   {
     path: 'cart',
     component: CartPageComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckoutPageComponent
   }
 ];
 
@@ -24,9 +32,18 @@ const routes: Routes = [
     BadgeModule,
     ButtonModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputMaskModule,
+    DropdownModule
   ],
-  declarations: [CartIconComponent, CartPageComponent, OrderSummaryComponent],
+  declarations: [
+    CartIconComponent,
+    CartPageComponent,
+    OrderSummaryComponent,
+    CheckoutPageComponent
+  ],
   exports: [CartIconComponent, CartPageComponent]
 })
 export class OrdersModule {
