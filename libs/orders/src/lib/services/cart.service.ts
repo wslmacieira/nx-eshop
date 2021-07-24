@@ -28,11 +28,12 @@ export class CartService {
     return cart;
   }
 
-  setCartItem(cartItem: CartItem): Cart {
+  setCartItem(cartItem: CartItem, updateCartItem?: boolean): Cart {
     const cart = this.getCart();
     const cartItemExist = cart.items?.find((item) => item.productId === cartItem.productId);
     if (cartItemExist) {
-      cartItemExist.quantity = cartItemExist.quantity! + cartItem.quantity!;
+      if (updateCartItem) cartItemExist.quantity = cartItem.quantity!;
+      else cartItemExist.quantity = cartItemExist.quantity! + cartItem.quantity!;
     } else {
       cart.items?.push(cartItem);
     }
@@ -45,7 +46,7 @@ export class CartService {
 
   deleteCartItem(productId: string) {
     const cart = this.getCart();
-    const newCart = cart.items?.filter(item => item.productId !== productId);
+    const newCart = cart.items?.filter((item) => item.productId !== productId);
 
     cart.items = newCart;
 
