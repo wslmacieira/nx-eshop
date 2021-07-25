@@ -9,9 +9,9 @@ import { OrdersService } from '../../services/orders.service';
 
 declare const require: any;
 type Country = {
-  id: string,
-  name: string
-}
+  id: string;
+  name: string;
+};
 
 @Component({
   selector: 'orders-checkout-page',
@@ -77,11 +77,13 @@ export class CheckoutPageComponent implements OnInit {
       dateOrdered: `${Date.now()}`
     };
 
-    this.orderService.createOrder(order).subscribe(order => {
+    this.orderService.createOrder(order).subscribe((order) => {
       //redirect to thank you page // payment
-      console.log(order);
+      this.cartService.emptyCart();
+      this.router.navigate(['/success']);
+    }, () => {
+      // display some message to user
     });
-
   }
 
   get checkoutForm() {
@@ -98,6 +100,5 @@ export class CheckoutPageComponent implements OnInit {
     })!;
 
     console.log(this.orderItems);
-
   }
 }
