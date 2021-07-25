@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "dwll",
+            "prefix": "admin",
             "style": "camelCase"
           }
         ],
@@ -21,10 +21,11 @@
           "error",
           {
             "type": "element",
-            "prefix": "dwll",
+            "prefix": "admin",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": 0
       }
     },
     {

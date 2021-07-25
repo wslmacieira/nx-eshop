@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'dwll-categories-list',
+  selector: 'admin-categories-list',
   templateUrl: './categories-list.component.html',
   styles: []
 })
@@ -37,7 +37,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.categoriesService.deleteCategory(categoryId).subscribe(
-          (response) => {
+          () => {
             this._getCategories();
             this.messageService.add({
               severity: 'success',
@@ -45,7 +45,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
               detail: 'Category is deleted!'
             });
           },
-          (error) => {
+          () => {
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
@@ -54,7 +54,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
           }
         );
       },
-      reject: (type: any) => {}
+      reject: () => {}
     });
   }
 

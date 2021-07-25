@@ -7,15 +7,15 @@ import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'dwll-categories-form',
+  selector: 'admin-categories-form',
   templateUrl: './categories-form.component.html',
   styles: []
 })
 export class CategoriesFormComponent implements OnInit {
   form!: FormGroup;
-  isSubmitted: boolean = false;
-  editMode: boolean = false;
-  currentCategoryId: string = '';
+  isSubmitted = false;
+  editMode = false;
+  currentCategoryId = '';
 
   constructor(
     private fb: FormBuilder,
@@ -37,8 +37,7 @@ export class CategoriesFormComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.form.invalid) {
-    }
+    if (this.form.invalid) return;
 
     const category: Category = {
       id: this.currentCategoryId,
@@ -56,17 +55,17 @@ export class CategoriesFormComponent implements OnInit {
 
   private _createCategory(category: Category) {
     this.categoriesService.createCategory(category).subscribe(
-      (response) => {
+      () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: 'Category is created!'
         });
-        timer(2000).toPromise().then((done) => {
+        timer(2000).toPromise().then(() => {
           this.location.back()
         })
       },
-      (error) => {
+      () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -78,17 +77,17 @@ export class CategoriesFormComponent implements OnInit {
 
   private _updateCategory(category: Category) {
     this.categoriesService.updateCategory(category).subscribe(
-      (response) => {
+      () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: 'Category is updated!'
         });
-        timer(2000).toPromise().then((done) => {
+        timer(2000).toPromise().then(() => {
           this.location.back()
         })
       },
-      (error) => {
+      () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',

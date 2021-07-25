@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    //
   }
 
   logoutUser(): void {

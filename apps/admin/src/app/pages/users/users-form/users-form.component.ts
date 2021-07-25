@@ -22,7 +22,7 @@ export class UsersFormComponent implements OnInit {
   form!: FormGroup;
   isSubmitted = false;
   editmode = false;
-  currentUserId: string = '';
+  currentUserId = '';
   countries: Country[] = [];
 
   constructor(
@@ -150,6 +150,7 @@ export class UsersFormComponent implements OnInit {
   }
 
   private _getCountries() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     countriesLib.registerLocale(require("i18n-iso-countries/langs/pt.json"));
     this.countries = Object.entries(countriesLib.getNames("pt", {select: "official"})).map((entry) => {
       return {

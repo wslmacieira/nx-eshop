@@ -39,7 +39,7 @@ export class OrdersListComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.ordersService.deleteOrder(orderId).subscribe(
-          (response) => {
+          () => {
             this._getOrders();
             this.messageService.add({
               severity: 'success',
@@ -47,7 +47,7 @@ export class OrdersListComponent implements OnInit {
               detail: 'Order is deleted!'
             });
           },
-          (error) => {
+          () => {
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
@@ -56,7 +56,7 @@ export class OrdersListComponent implements OnInit {
           }
         );
       },
-      reject: (type: any) => {}
+      reject: () => {}
     });
 
   }

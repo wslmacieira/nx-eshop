@@ -4,7 +4,7 @@ import { Product, ProductsService } from '@dwll/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'dwll-products-list',
+  selector: 'admin-products-list',
   templateUrl: './products-list.component.html',
   styles: [
   ]

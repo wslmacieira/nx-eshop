@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'dwll-products-form',
+  selector: 'admin-products-form',
   templateUrl: './products-form.component.html',
   styles: []
 })
@@ -17,7 +17,7 @@ export class ProductsFormComponent implements OnInit {
   isSubmitted = false;
   categories: Category[] = [];
   imageDisplay: string | ArrayBuffer = '';
-  currentProductId: string = ''
+  currentProductId = ''
 
   constructor(
     private fb: FormBuilder,
@@ -56,17 +56,17 @@ export class ProductsFormComponent implements OnInit {
 
   private _updateProduct(productFormData: FormData) {
     this.productsService.updateProduct(productFormData, this.currentProductId).subscribe(
-      (response) => {
+      () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: 'Product is updated!'
         });
-        timer(2000).toPromise().then((done) => {
+        timer(2000).toPromise().then(() => {
           this.location.back()
         })
       },
-      (error) => {
+      () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -111,7 +111,7 @@ export class ProductsFormComponent implements OnInit {
       return;
     }
 
-    let productFormData = new FormData();
+    const productFormData = new FormData();
 
     Object.keys(this.productForm).map((key) => {
       productFormData.append(key, this.productForm[key].value);
@@ -131,7 +131,7 @@ export class ProductsFormComponent implements OnInit {
 
   private _addProduct(productData: FormData) {
     this.productsService.createProduct(productData).subscribe(
-      (response) => {
+      () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -139,11 +139,11 @@ export class ProductsFormComponent implements OnInit {
         });
         timer(2000)
           .toPromise()
-          .then((done) => {
+          .then(() => {
             this.location.back();
           });
       },
-      (error) => {
+      () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',

@@ -1,4 +1,3 @@
-import { JwtInterceptor } from './../../../../libs/users/src/lib/services/jwt.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +21,7 @@ import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
 
-import { AuthGuard, UsersModule } from '@dwll/users';
+import { AuthGuard, JwtInterceptor, UsersModule } from '@dwll/users';
 import { CategoriesService } from '@dwll/products';
 
 import { AppComponent } from './app.component';

@@ -24,7 +24,8 @@
             "prefix": "ngshop",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": 0
       }
     },
     {
