@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import * as countriesLib from 'i18n-iso-countries'
 
+declare const require: any;
 const api_url = `${environment.apiURL}users`;
 @Injectable({
   providedIn: 'root'
@@ -34,5 +36,15 @@ export class UsersService {
 
   getUsersCount(): Observable<number> {
     return this.http.get<number>(`${api_url}/get/count`)
+  }
+
+  getCountries() {
+    countriesLib.registerLocale(require("i18n-iso-countries/langs/pt.json"));
+    return  Object.entries(countriesLib.getNames("pt", {select: "official"})).map((entry) => {
+      return {
+        id: entry[0],
+        name: entry[1]
+      }
+    })
   }
 }

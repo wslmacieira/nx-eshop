@@ -1,9 +1,7 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Order, OrdersService } from '@dwll/orders';
+import { ActivatedRoute } from '@angular/router';
+import { Order, OrdersService, ORDER_STATUS  } from '@dwll/orders';
 import { MessageService } from 'primeng/api';
-import { ORDER_STATUS } from '../order.constants';
 
 type OrderStatus = {
   id: string;
